@@ -1,0 +1,13 @@
+Uuid: vlrSa2fw3cLJQeQH
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

@@ -1,0 +1,13 @@
+Uuid: 8kkCyMeQusU2BlBT
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

@@ -1,0 +1,29 @@
+Caption: Furniture shop
+
+----
+
+Alt: Furniture shop
+
+----
+
+Photographer: 
+
+----
+
+License: 
+
+----
+
+Link: https://www.thezero.club/demo/one-furniture/
+
+----
+
+Sitemap: true
+
+----
+
+Uuid: OODIKPZyTTPtn9bA
+
+----
+
+Template: image

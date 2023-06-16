@@ -1,0 +1,20 @@
+label: 
+  en: Section size
+  de: Abschnittsgröße
+type: select
+default: " uk-section-large"
+placeholder: Default
+options:
+  " uk-section-xsmall": 
+    en: XSmall
+    de: XKlein
+  " uk-section-small": 
+    en: Small
+    de: Klein
+  " uk-section-large": 
+    en: Large
+    de: Groß
+  " uk-section-xlarge": 
+    en: XLarge
+    de: XGroß
+width: 1/3

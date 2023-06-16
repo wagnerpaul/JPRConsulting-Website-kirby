@@ -1,0 +1,13 @@
+Uuid: ZXrwbcloTSgp3ug5
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

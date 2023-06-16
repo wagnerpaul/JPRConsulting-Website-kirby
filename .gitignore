@@ -1,0 +1,18 @@
+# Kirby #
+#########
+/public/media
+/storage/*
+# /vendor. ##. committing this folder to avoid integrating composer with docker
+
+# Custom #
+##########
+node_modules
+private-notes.md
+.sass-cache
+.env
+/*.sublime-project
+/*.sublime-workspace
+backups
+content-starter
+site-starter
+.htpasswd

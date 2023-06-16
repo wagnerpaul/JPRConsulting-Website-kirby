@@ -1,0 +1,21 @@
+#process .uk-grid {
+    margin: -10px;
+}
+#process .uk-grid > div {
+    border: 10px solid transparent;
+}
+#process .uk-grid > div > .uk-background-top-right {
+    background-position: right 15px top 15px;
+}
+
+#eliminate-complexity .uk-grid {
+    margin:0px;
+}
+#too-complex {
+    padding-left:0px;
+}
+@media (max-width: 395px) {
+    #what-we-do {
+        font-size: 2.34rem;
+    }
+}

@@ -1,0 +1,23 @@
+type: fields
+fields:
+  siteMiscHeadline:
+    label: 
+      en: Misc Settings
+      de: Verschiedene Einstellungen
+    type: headline
+    numbered: false
+    id: misc
+  typedText:
+    label: Typed text
+    type: toggle
+    help: 
+      en: Enable typed text script for Typed text block
+      de: Skript für Typed text für getippten Textblock aktivieren
+  syntaxHighlighting:
+    label: 
+      en: Syntax highlighting
+      de: Syntaxhervorhebung
+    type: toggle
+    help: 
+      en: Enable syntax highlighting for Code block
+      de: Aktivieren Sie die Syntaxhervorhebung für den Codeblock

@@ -1,0 +1,164 @@
+title: Site
+
+tabs:
+  # Site Content tab
+  content: tabs/site-content
+
+  # Site Settings tab
+  siteoptions:
+    label: 
+      en: Site Settings
+      de: Seiteneinstellungen
+    icon: settings
+    columns:
+      - width: 2/3
+        sections:
+          # brand settings
+          sitesetup: 
+            extends: sections/site-brand
+
+          # navbar
+          navbar:
+            extends: sections/site-navbar
+
+          # header
+          headersettings:
+            extends: sections/site-header
+
+          #projects section
+          projectsettings:
+            extends: sections/site-projects
+
+          #shop section
+          shopsettings:
+            extends: sections/site-shop
+
+           # social
+          socialsettings:
+            extends: sections/site-social
+
+          # footer builder
+          footerBuilder:
+            type: fields
+            fields:
+              footer:
+                label: 
+                  en: Footer
+                  de: Fusszeile
+                type:  headline
+              # footer builder
+              footerBuilder:
+                label: Footer builder
+                type: toggles
+                default: content-builder
+                options:
+                  - value: content-builder
+                    text: Footer Options (Old)
+                    icon: settings
+                  - value: layout-builder
+                    text: Layout Builder (New)
+                    icon: grid
+              
+          #footer section
+          footersettings:
+            extends: sections/site-footer
+            when:
+              footerBuilder: content-builder
+          
+          # Layout Builder sections
+          layoutBuilder:
+            extends: sections/layout-builder
+            when:
+              footerBuilder: layout-builder
+
+          # custom settings
+          customsettings:
+            extends: sections/custom-site
+
+      - width: 1/3
+        sections:
+          # media settings
+          mediaSettings:
+            extends: sections/site-media
+
+          # performance settings
+          performanceSettings:
+            extends: sections/site-performance
+
+            # misc settings
+          miscsettings:
+            extends: sections/site-misc
+
+          #transitions section
+          transitionsettings:
+            extends: sections/site-transitions
+
+          #cookie consent section
+          cookiesettings:
+            extends: sections/site-cookie
+
+  # SEO tab
+  seo:
+    label: SEO & Files
+    icon: search
+    columns:
+      - width: 2/3
+        sections:
+          meta:
+            type: fields
+            fields:
+
+              # Meta Image
+              metaFile:
+                label: Site Meta Image
+                multiple: false
+                extends: fields/image
+                help: 
+                  en: Recommended image size 1200x630. Used for Home Page, but also as a backup for page Meta Image.
+                  de: Empfohlene Bildgröße 1200x630. Wird für die Startseite, aber auch als Backup für das Seiten-Meta-Image verwendet.
+            
+              # Meta Title
+              metaTitle:
+                label: 
+                  en: Site Meta Title
+                  de: Site-Meta-Titel
+                type: text
+                maxlength: 70
+                help: 
+                  en: The page title will be shown if no Site Meta Title is given.
+                  de: Der Seitentitel wird angezeigt, wenn kein Site-Metatitel angegeben ist.
+                  
+              # Meta Description
+              metaDescription:
+                label: 
+                  en: Site Meta Description
+                  de: Site Meta Beschreibung
+                type: textarea
+                size: small
+                maxlength: 160
+                buttons: false
+                help: 
+                  en: The site meta description will be shown if no page description is given.
+                  de: Die Site-Meta-Beschreibung wird angezeigt, wenn keine Seitenbeschreibung angegeben ist.
+
+      - width: 1/3
+        sections:
+          # Files
+          metaFiles:
+            headline: 
+              en: Files
+              de: Dateien
+            type: files
+            info: "{{ file.dimensions }} {{ file.niceSize }}"
+            search: true
+            help: 
+              en: Click on the file and add its meta information.
+              de: Klicken Sie auf die Datei und fügen Sie ihre Metainformationen hinzu.
+
+  # Labels tab
+  labels:
+    extends: tabs/labels
+
+  # Styling tab
+  styling:
+    extends: tabs/styling

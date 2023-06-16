@@ -1,0 +1,121 @@
+type: fields
+fields:
+  sitesettings:
+    label: 
+      en: Brand Settings
+      de: Markeneinstellungen
+    type: headline
+    id: brand
+  author:
+    label: 
+      en: Site Author
+      de: Site-Autor
+    type: text
+    icon: user
+    width: 1/2
+  twitteruser:
+    label: 
+      en: Twitter username
+      de: Twitter Benutzername
+    type: text
+    placeholder: @username
+    icon: twitter
+    help: 
+      en: Used for SEO purpose.
+      de: Wird für SEO-Zwecke verwendet.
+    width: 1/2
+  email:
+    label: Email
+    type: email
+    help: 
+      en: This email is used for contact form message receiving and as a contact form sender.
+      de: Diese E-Mail wird zum Empfangen von Kontaktformularnachrichten und als Absender von Kontaktformularen verwendet.
+    width: 1/2
+  favicon:
+    label: Favicon
+    type: image-clip
+    translate: false
+    uploads: image
+    help: 
+      en: Must be PNG file. Should be square, max 512px, min 256px.
+      de: Muss eine PNG-Datei sein. Sollte quadratisch sein, max. 512px, min. 256px.
+    multiple: false
+    query: site.images.filterBy('extension', 'png')
+    clip:
+      minwidth: 256
+      minheight: 256
+      maxwidth: 512
+      maxheight: 512
+      ratio: fixed
+    width: 1/2
+
+  lineLogo:
+    type: line
+  logo:
+    label: Logo
+    type: files
+    multiple: false
+    query: site.images
+    uploads: image
+    help: 
+      en: Main website logo.
+      de: Hauptwebsite-Logo.
+    width: 1/2
+  logoInverted:
+    label: 
+      en: Logo inverted
+      de: Logo invertiert
+    type: files
+    multiple: false
+    uploads: image
+    query: site.images
+    width: 1/2
+    help: 
+      en: Logo for inverted background.
+      de: Logo für invertierten Hintergrund.
+  logoMobile:
+    label: Logo mobile
+    type: files
+    multiple: false
+    query: site.images
+    uploads: image
+    help: 
+      en: If empty main logo will be used.
+      de: Wenn leer, wird das Hauptlogo verwendet.
+    width: 1/2
+  logoMobileInverted:
+    label: Logo mobile inverted
+    type: files
+    multiple: false
+    query: site.images
+    uploads: image
+    help: 
+      en: If empty main logo inverted will be used.
+      de: Wenn leer, wird das Hauptlogo invertiert verwendet.
+    width: 1/2
+  logoHeight:
+    label: 
+      en: Logo Height
+      de: Logo Höhe
+    type: range
+    step: 1
+    min: 18
+    max: 100
+    default: 21
+    tooltip:
+      after: px
+    width: 1/2
+  mobileLogoHeight:
+    label: 
+      en: Mobile Logo Height
+      de: Mobile Logo Höhe
+    type: range
+    step: 1
+    min: 18
+    max: 100
+    default: 21
+    tooltip:
+      after: px
+    width: 1/2
+  brandGap:
+    type: gap

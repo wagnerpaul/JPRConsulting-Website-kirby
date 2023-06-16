@@ -1,0 +1,39 @@
+version: '2'
+
+volumes:
+  content:
+    external: true
+    name: ${SLD}-stg-content
+  media:
+    external: true
+    name: ${SLD}-stg-media
+  sessions:
+    external: true
+    name: ${SLD}-stg-sessions
+  accounts:
+    external: true
+    name: ${SLD}-accounts
+
+services:
+  stg:
+    build: .
+    image: wagnerpaul/${SLD}-main-app:stg
+    volumes:
+      - content:/app/content
+      - media:/app/public/media
+      - sessions:/app/storage/sessions
+      - accounts:/app/storage/accounts
+    environment:
+      SERVER_NAME: stg.${SLD}.${TLD}
+      VIRTUAL_HOST: stg.${SLD}.${TLD}
+      ENABLE_PANEL: 'false'
+      ENABLE_PW: 'false'
+      LETSENCRYPT_HOST: stg.${SLD}.${TLD}
+      LETSENCRYPT_EMAIL: jeremy@korb.studio
+    container_name: ${SLD}-stg
+    restart: always
+
+networks:
+  default:
+    name: proxy-network
+

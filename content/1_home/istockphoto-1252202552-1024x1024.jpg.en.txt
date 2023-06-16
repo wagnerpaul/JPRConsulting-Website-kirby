@@ -1,0 +1,13 @@
+Uuid: o52NExh7rnvnJdQX
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

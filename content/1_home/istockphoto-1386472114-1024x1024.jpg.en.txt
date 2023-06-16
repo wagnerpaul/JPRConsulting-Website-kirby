@@ -1,0 +1,13 @@
+Uuid: MyEIEQPO3WCt9zG7
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

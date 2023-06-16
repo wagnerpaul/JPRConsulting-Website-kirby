@@ -1,0 +1,13 @@
+Uuid: cvwWcaYtzfHMQkvp
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true
