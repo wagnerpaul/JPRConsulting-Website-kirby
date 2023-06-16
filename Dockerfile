@@ -23,7 +23,8 @@ RUN apk update && \
     php81-phar\
     php81-simplexml\
     php81-iconv\
-    php81-pecl-xdebug\
+    # sometimes debugging is nice
+    # php81-pecl-xdebug\
     # required by kirby but docs say these are enabled by default
     # php81-filter\
     # php81-hash\
@@ -66,7 +67,8 @@ WORKDIR /app
 COPY ./docker /docker
 COPY ./docker/nginx/.htpasswd /etc/nginx/
 COPY ./docker/php/00_opcache.ini /etc/php81/conf.d
-COPY ./docker/php/50_xdebug.ini /etc/php81/conf.d
+# sometimes debugging is nice
+# COPY ./docker/php/50_xdebug.ini /etc/php81/conf.d
 RUN chmod +x /docker/docker-entrypoint.sh
 COPY ./ /app
 
