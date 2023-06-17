@@ -12,15 +12,6 @@ $kirby = new Kirby([
         'accounts' => $storage . '/accounts',
         'cache'    => $storage . '/cache',
         'sessions' => $storage . '/sessions',
-        // 'blueprints'    => $site . '/theme/blueprints',
-        // 'collections'   => $site . '/theme/collections',
-        // 'controllers'   => $site . '/theme/controllers',
-        // 'models'        => $site . '/theme/models',
-        // 'snippets'      => $site . '/theme/snippets',
-        // 'templates'     => $site . '/theme/templates'
     ]
 ]);
-// echo '<pre>';
-// echo var_dump($kirby->site());
-// echo '</pre>';
 echo $kirby->render();
