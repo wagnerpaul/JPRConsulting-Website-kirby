@@ -7,7 +7,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => false,
+        'dev' => true,
     ),
     'versions' => array(
         'bnomei/kirby3-fingerprint' => array(
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'claviska/simpleimage' => array(
-            'pretty_version' => '4.0.2',
-            'version' => '4.0.2.0',
-            'reference' => '226d507cca0c8400d69bee7eb324158e3cbe246e',
+            'pretty_version' => '4.0.5',
+            'version' => '4.0.5.0',
+            'reference' => 'b25690f0fc25b2f0b91731370465a3b4e52ea587',
             'type' => 'library',
             'install_path' => __DIR__ . '/../claviska/simpleimage',
             'aliases' => array(),
@@ -65,9 +65,9 @@
             'dev_requirement' => false,
         ),
         'getkirby/cms' => array(
-            'pretty_version' => '3.9.4',
-            'version' => '3.9.4.0',
-            'reference' => '282b1e25faa0bc24c903237a7484dc45fa475c36',
+            'pretty_version' => '3.9.5',
+            'version' => '3.9.5.0',
+            'reference' => '6b5dda600472b59a3a779f7e6b8e9e130cc414a1',
             'type' => 'kirby-cms',
             'install_path' => __DIR__ . '/../../kirby',
             'aliases' => array(),
@@ -230,9 +230,9 @@
             ),
         ),
         'symfony/yaml' => array(
-            'pretty_version' => 'v5.4.21',
-            'version' => '5.4.21.0',
-            'reference' => '3713e20d93e46e681e51605d213027e48dab3469',
+            'pretty_version' => 'v5.4.23',
+            'version' => '5.4.23.0',
+            'reference' => '4cd2e3ea301aadd76a4172756296fe552fb45b0b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/yaml',
             'aliases' => array(),

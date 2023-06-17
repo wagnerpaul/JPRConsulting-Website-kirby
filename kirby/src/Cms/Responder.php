@@ -431,6 +431,7 @@ class Responder
 	public static function isPrivate(bool $usesAuth, array $usesCookies): bool
 	{
 		$kirby = App::instance();
+
 		if ($usesAuth === true && $kirby->request()->hasAuth() === true) {
 			return true;
 		}

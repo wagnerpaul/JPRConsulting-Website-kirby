@@ -14,19 +14,12 @@ Manage the [robots.txt](https://developers.google.com/search/reference/robots_tx
 
 - [kirby3-wellknown](https://github.com/omz13/kirby3-wellknown)
 
-## Commercial Usage
+## Commerical Usage
 
-> <br>
-> <b>Support open source!</b><br><br>
-> This plugin is free but if you use it in a commercial project please consider to sponsor me or make a donation.<br>
-> If my work helped you to make some cash it seems fair to me that I might get a little reward as well, right?<br><br>
-> Be kind. Share a little. Thanks.<br><br>
-> &dash; Bruno<br>
-> &nbsp; 
-
-| M | O | N | E | Y |
-|---|----|---|---|---|
-| [Github sponsor](https://github.com/sponsors/bnomei) | [Patreon](https://patreon.com/bnomei) | [Buy Me a Coffee](https://buymeacoff.ee/bnomei) | [Paypal dontation](https://www.paypal.me/bnomei/15) | [Hire me](mailto:b@bnomei.com?subject=Kirby) |
+This plugin is free but if you use it in a commercial project please consider to 
+- [make a donation 🍻](https://www.paypal.me/bnomei/3) or
+- [buy me ☕](https://buymeacoff.ee/bnomei) or
+- [buy a Kirby license using this affiliate link](https://a.paddle.com/v2/click/1129/35731?link=1170)
 
 ## Installation
 
@@ -38,7 +31,7 @@ Manage the [robots.txt](https://developers.google.com/search/reference/robots_tx
 
 The plugin generates automatic defaults for the starterkit. You do not have to enter them in the config file. But if you would it would look like this.
 
-> TIP: If you are using the [kirby3-feeds Plugin](https://github.com/bnomei/kirby3-feeds) or [kirby3-xmlsitemap Plugin](https://github.com/omz13/kirby3-xmlsitemap) your sitemap will be automatically added to the `robots.txt` file. You can skip setting the `bnomei.robots-txt.sitemap` config value to `sitemap.xml`.
+> TIP: If you are using the [kirby3-xmlsitemap Plugin](https://github.com/omz13/kirby3-xmlsitemap) your sitemap will be automatically added to the `robots.txt` file. You can skip setting the `bnomei.robots-txt.sitemap` config value to `sitemap.xml`.
 
 **defaults for starterkit**
 ```php

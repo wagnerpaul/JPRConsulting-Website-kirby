@@ -1021,6 +1021,7 @@ class Page extends ModelWithContent
 	{
 		$kirby = $this->kirby();
 		$cache = $cacheId = $html = null;
+
 		// try to get the page from cache
 		if (empty($data) === true && $this->isCacheable() === true) {
 			$cache       = $kirby->cache('pages');
