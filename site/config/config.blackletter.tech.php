@@ -11,6 +11,7 @@ return [
             'active' => false,
         ]
     ],
+    'url' => 'https://blackletter.tech',
     'hooks' => [
         //styling switcher on prod should always be off
         'page.render:before' => function ($page) {

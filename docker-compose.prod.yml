@@ -1,0 +1,40 @@
+version: '2'
+
+volumes:
+  content:
+    external: true
+    name: ${SLD}-prod-content
+  media:
+    external: true
+    name: ${SLD}-prod-media
+  sessions:
+    external: true
+    name: ${SLD}-prod-sessions
+  accounts:
+    external: true
+    name: ${SLD}-accounts
+
+services:
+  prod:
+    #no build directive to prevent accidental builds
+    #use: build: .
+    image: wagnerpaul/${SLD}-main-app:latest
+    volumes:
+      - content:/app/content
+      - media:/app/public/media
+      - sessions:/app/storage/sessions
+      - accounts:/app/storage/accounts
+    environment:
+      SERVER_NAME: ${SLD}.${TLD}  #one canonical for nginx file
+      VIRTUAL_HOST: www.${SLD}.${TLD}, ${SLD}.${TLD} #redirectable list with canonical last for jwilder
+      ENABLE_PANEL: 'false'
+      ENABLE_PW: 'false'
+      LETSENCRYPT_HOST: www.${SLD}.${TLD}, ${SLD}.${TLD}
+      LETSENCRYPT_EMAIL: jeremy@korb.studio
+    container_name: ${SLD}-prod
+    restart: always
+
+networks:
+  default:
+    external:
+      name: proxy-network
