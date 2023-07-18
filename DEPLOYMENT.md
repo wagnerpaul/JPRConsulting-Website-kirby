@@ -97,3 +97,4 @@ https://docs.docker.com/engine/reference/commandline/image_prune/
     set -o allexport; source .env; set +o allexport && \
     docker exec $(PROXY_CONTAINER) /app/force_renew
 
+test
