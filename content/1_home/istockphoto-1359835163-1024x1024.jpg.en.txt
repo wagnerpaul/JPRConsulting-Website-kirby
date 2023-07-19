@@ -1,0 +1,13 @@
+Uuid: m301jIZG1Ps01lVc
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

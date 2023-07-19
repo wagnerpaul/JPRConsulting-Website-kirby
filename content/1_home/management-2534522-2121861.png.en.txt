@@ -1,0 +1,13 @@
+Uuid: SRd5ba3kcMaNzbv0
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

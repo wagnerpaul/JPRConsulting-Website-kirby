@@ -1,0 +1,13 @@
+Uuid: CPoPGlyIOx67VssH
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

@@ -1,0 +1,13 @@
+Uuid: NyF6zIB3OoHOPsPE
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

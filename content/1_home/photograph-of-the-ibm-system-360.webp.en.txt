@@ -1,0 +1,13 @@
+Uuid: 6RypqupKbrWFGLDI
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true

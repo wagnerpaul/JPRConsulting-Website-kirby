@@ -1,0 +1,13 @@
+Uuid: KoRMbMYjsvvuJ8O8
+
+----
+
+Template: image
+
+----
+
+Caption: 
+
+----
+
+Sitemap: true
