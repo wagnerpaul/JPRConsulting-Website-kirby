@@ -26,8 +26,8 @@ services:
     environment:
       SERVER_NAME: stg.${SLD}.${TLD}
       VIRTUAL_HOST: stg.${SLD}.${TLD}
-      ENABLE_PANEL: 'false'
-      ENABLE_PW: 'false'
+      ENABLE_PANEL: 'true'
+      ENABLE_PW: 'true'
       LETSENCRYPT_HOST: stg.${SLD}.${TLD}
       LETSENCRYPT_EMAIL: jeremy@korb.studio
     container_name: ${SLD}-stg
