@@ -32,7 +32,26 @@ services:
       LETSENCRYPT_EMAIL: jeremy@korb.studio
     container_name: ${SLD}-stg
     restart: always
-
+  backups:
+    image: blacklabelops/volumerize
+    container_name: ${SLD}-content-backups-stg
+    restart: unless-stopped
+    volumes:
+      - content:/content:ro
+    environment:
+      VOLUMERIZE_FULL_IF_OLDER_THAN: 1M
+      VOLUMERIZE_SOURCE: /content
+      VOLUMERIZE_TARGET: b2://${B2_ID}:${B2_KEY}@${B2_BUCKET}/${SLD}-backups/content-stg
+  bioflourish-accounts-backups-stg:
+    image: blacklabelops/volumerize
+    container_name: ${SLD}-accounts-backups-stg
+    restart: unless-stopped
+    volumes:
+      - accounts:/accounts:ro
+    environment:
+      VOLUMERIZE_FULL_IF_OLDER_THAN: 1M
+      VOLUMERIZE_SOURCE: /accounts
+      VOLUMERIZE_TARGET: b2://${B2_ID}:${B2_KEY}@${B2_BUCKET}/${SLD}-backups/accounts-stg
 networks:
   default:
     name: proxy-network
