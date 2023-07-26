@@ -4,6 +4,9 @@ volumes:
   content:
     external: true
     name: ${SLD}-prod-content
+  content-stg:
+    external: true
+    name: ${SLD}-stg-content
   media:
     external: true
     name: ${SLD}-prod-media
@@ -24,6 +27,7 @@ services:
       - media:/app/public/media
       - sessions:/app/storage/sessions
       - accounts:/app/storage/accounts
+      - content-stg:/app/content-stg:ro
     environment:
       SERVER_NAME: ${SLD}.${TLD}  #one canonical for nginx file
       VIRTUAL_HOST: www.${SLD}.${TLD}, ${SLD}.${TLD} #redirectable list with canonical last for jwilder
