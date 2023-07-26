@@ -56,12 +56,12 @@ Kirby::plugin('wagnerpaul/deploy-content', [
             if ($path === $endpointAndHook.'/progress' && $method === 'POST') {
               $kirby = kirby();
               $site = $kirby->site();
-              $site->flush_dir('/app/conten-prod');
-              $site->push_dir('/app/content','/app/conten-prod');
-              $site->flush_dir('/app/storage-prod/cache');
+              $site->flush_dir('/app/content');
+              $site->push_dir('/app/content-stg','/app/content');
+              $site->flush_dir('/app/storage/cache');
 
 
-                $url = kirby()->site()->url().'/'.$endpointAndHook.'/success';
+                $url = 'https://stg.'.env('SLD').'.'.env('TLD').'/'.$endpointAndHook.'/success';
                 $data = ['status' => 'success'];
                 $options = [
                     'method'  => 'POST',
