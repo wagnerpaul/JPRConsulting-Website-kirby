@@ -111,5 +111,20 @@ return [
     'bnomei.dotenv' => [
       'dir' => function() { return kirby()->roots()->base(); },
     ],
-
+    // More info on this setings at https://getkirby.com/docs/cookbook/forms/using-mailhog-for-email-testing#what-is-mailhog
+    'email' => [
+      'transport' => [
+        'type' => 'smtp',
+        'host' => env('EMAIL_TRANSPORT_HOST'),
+        'port' => 587,
+        'security' => true,
+        'auth' => true,
+        'username' => env('EMAIL_TRANSPORT_USERNAME'),
+        'password' => env('EMAIL_TRANSPORT_PASSWORD'),
+        'beforeSend' => function ($mailer) {
+          $mailer->SMTPDebug = 2;
+          return $mailer;
+        }
+      ]
+    ],
 ];
