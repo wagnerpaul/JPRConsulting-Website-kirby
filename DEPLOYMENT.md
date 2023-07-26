@@ -67,6 +67,7 @@ note: modified into a promote strategy in the deploy.sh
 **get remote shell**
     
     set -o allexport; source .env; set +o allexport && \
+    eval $(docker-machine env ${DOCKER_MACHINE}) && \
     docker exec -it ${SLD}-stg /bin/sh   
     docker exec -it ${SLD}-prod /bin/sh
 
