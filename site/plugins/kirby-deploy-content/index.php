@@ -31,15 +31,13 @@ Kirby::plugin('wagnerpaul/deploy-content', [
         }
     ],
     'routes' => function ($kirby) {
-        $site = $kirby->site();
-        $env = parse_ini_file('/app/.env');
         return [
 
             [
-                'pattern' => $env['DEPLOY_CONTENT_HOOK'].'/start',  //use normal notation here
+                'pattern' => env('DEPLOY_CONTENT_HOOK').'/start',
                 'method' => 'POST',
                 'action'  => function () {
-                  $key = kirby()->request()->get('key'); //use korby options here
+                  $key = kirby()->request()->get('key');
                   if ($key === env('DEPLOY_CONTENT_KEY')) {
                     $response = Response::json(['status' => 'start'], 200);
                   } else {
