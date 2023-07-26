@@ -1,5 +1,4 @@
 <?php
-if(!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
 include '../vendor/autoload.php';
 
 $kirby = new Kirby([
