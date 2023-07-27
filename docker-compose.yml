@@ -4,6 +4,9 @@ volumes:
   content:
     external: true
     name: ${SLD}-stg-content
+  content-prod:
+    external: true
+    name: ${SLD}-prod-content
   media:
     external: true
     name: ${SLD}-stg-media
@@ -13,14 +16,18 @@ volumes:
   accounts:
     external: true
     name: ${SLD}-accounts
-
+  cache-prod:
+    external: true
+    name: ${SLD}-prod-cache
 services:
   stg:
     build: .
     image: wagnerpaul/${SLD}-main-app:stg
     volumes:
       - content:/app/content
+      - content-prod:/app/content-prod
       - media:/app/public/media
+      - cache-prod:/app/storage-prod/cache
       - sessions:/app/storage/sessions
       - accounts:/app/storage/accounts
     environment:
@@ -32,7 +39,7 @@ services:
       LETSENCRYPT_EMAIL: jeremy@korb.studio
     container_name: ${SLD}-stg
     restart: always
-  backups:
+  backups-content-stg:
     image: blacklabelops/volumerize
     container_name: ${SLD}-content-backups-stg
     restart: unless-stopped
@@ -42,7 +49,7 @@ services:
       VOLUMERIZE_FULL_IF_OLDER_THAN: 1M
       VOLUMERIZE_SOURCE: /content
       VOLUMERIZE_TARGET: b2://${B2_ID}:${B2_KEY}@${B2_BUCKET}/${SLD}-backups/content-stg
-  bioflourish-accounts-backups-stg:
+  backups-accounts-stg:
     image: blacklabelops/volumerize
     container_name: ${SLD}-accounts-backups-stg
     restart: unless-stopped

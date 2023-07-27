@@ -56,14 +56,15 @@ Kirby::plugin('wagnerpaul/deploy-content', [
             if ($path === $endpointAndHook.'/progress' && $method === 'POST') {
               $kirby = kirby();
               $site = $kirby->site();
-              $site->flush_dir('/app/content');
-              $site->push_dir('/app/content-stg','/app/content');
-              $site->flush_dir('/app/storage/cache');
+              $site->flush_dir('/app/content-prod');
+              $site->push_dir('/app/content','/app/content-prod');
+              $site->flush_dir('/app/storage-prod/cache');
 
 
-                $url = 'https://stg.'.env('SLD').'.'.env('TLD').'/'.$endpointAndHook.'/success';
+                $url = kirby()->site()->url().'/'.$endpointAndHook.'/success';
                 $data = ['status' => 'success'];
                 $options = [
+                    'basicAuth'=> env('BASIC_AUTH_USER').':'.env('BASIC_AUTH_PASSWORD'),
                     'method'  => 'POST',
                     'data'    => json_encode($data)
                  ];

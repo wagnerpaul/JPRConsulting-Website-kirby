@@ -59,6 +59,8 @@ fn_deployapp() {
         echo $(yellowprint 'Active Docker Machine: ') $(blueprint `docker-machine active` ) && \
         docker build -t wagnerpaul/${SLD}-main-app:${1} . && \
         docker-compose up -d --force-recreate
+        echo $(yellowprint "Copying .env File To $1") && \
+        docker cp ./.env ${SLD}-${1}:app
     else 
         redprint "Canceling app deployement to $1."
         $2
@@ -79,6 +81,8 @@ fn_promoteapp() {
         echo $(yellowprint "Pushing image ${SLD}-main-app:`date +%Y%m%d`") && \
         docker push wagnerpaul/${SLD}-main-app:`date +%Y%m%d` && \
         docker-compose -f docker-compose.prod.yml up -d --force-recreate
+        echo $(yellowprint "Clearing Cache On $1") && \
+        docker exec -it ${SLD}-${1} sh -c 'rm -rf /app/storage/cache/*'
     else
         redprint "Canceling app promotion to $1."
         $2
