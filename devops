@@ -156,6 +156,39 @@ This will DELETE AND REPLACE all content on localhost. [y/N]"
     fi
 }
 
+fn_backup() {
+    eval $(docker-machine env ${DOCKER_MACHINE}) && \
+    echo $(yellowprint 'Active Docker Machine: ') $(blueprint `docker-machine active` ) && \
+    echo $(yellowprint "Backing Up Content On $1") && \
+    docker exec ${SLD}-content-backups-${1} backup  && \
+    echo $(yellowprint "Backing Up Accounts On $1") && \
+    docker exec ${SLD}-accounts-backups-${1} backup
+}
+
+fn_listbackups() {
+    eval $(docker-machine env ${DOCKER_MACHINE}) && \
+    echo $(yellowprint 'Active Docker Machine: ') $(blueprint `docker-machine active` ) && \
+    echo $(yellowprint "Content Backups On $1") && \
+    docker exec ${SLD}-content-backups-${1} list  && \
+    echo $(yellowprint "Accounts Backups On $1") && \
+    docker exec ${SLD}-accounts-backups-${1} list
+}
+fn_restore() {
+    echo -ne "
+$(yellowprint 'Restore Should Be Handled With Care')
+$(greenprint 'Accounts and content should be considered independently.')
+$(greenprint 'Restore time point should be considered carefully.')
+
+$(yellowprint 'Command Example')
+$(blueprint 'set -o allexport; source .env; set +o allexport && \')
+$(blueprint 'eval $(docker-machine env ${DOCKER_MACHINE}) && \')
+$(blueprint "docker exec ${SLD}-content-backups-${1} restore -t 3D")
+
+$(yellowprint 'Documentation')
+$(cyanprint 'https://github.com/blacklabelops/volumerize')
+    "
+}
+
 fn_getshell() {
     eval $(docker-machine env ${DOCKER_MACHINE}) && \
     echo $(yellowprint 'Active Docker Machine: ') $(blueprint `docker-machine active` ) && \
@@ -175,9 +208,10 @@ menu_staging() {
 $(blueprint 'CHOOSE TASK')
 $(greenprint '1)') Deploy Staging App
 $(blueprint '2)') Push Local Content -> Staging
-$(cyanprint '3)') Backup Staging Content
-$(yellowprint '4)') Restore Staging Content
-$(greenprint '5)') Get Staging Shell
+$(cyanprint '3)') Backup Staging
+$(yellowprint '4)') List Staging Backups
+$(blueprint '5)') Restore Staging Backups
+$(greenprint '6)') Get Staging Shell
 
 $(magentaprint 'M)') Go Back to Main Menu
 $(redprint '0)') Exit
@@ -193,14 +227,18 @@ Choose an option:  "
         menu_staging
         ;;
     3)
-        echo 'backup functions not implemented yet'
+        fn_backup stg menu_staging
         menu_staging
         ;;
     4)
-        echo 'backup functions not implemented yet'
+        fn_listbackups stg menu_staging
         menu_staging
         ;;
     5)
+        fn_restore stg menu_staging
+        menu_staging
+        ;;
+    6)
         fn_getshell stg menu_staging
         menu_staging
         ;;
