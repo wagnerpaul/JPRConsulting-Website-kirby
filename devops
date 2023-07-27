@@ -51,6 +51,12 @@ fn_bye() { echo "Bye bye."; exit 0; }
 fn_fail() { echo "Wrong option." exit 1; }
 
 ### Menu Functions ##
+fn_docker_machine_ssh() {
+    eval $(docker-machine env ${DOCKER_MACHINE}) && \
+    echo $(yellowprint 'Active Docker Machine: ') $(blueprint `docker-machine active` ) && \
+    docker-machine ssh ${DOCKER_MACHINE}
+}
+
 
 fn_deployapp() {
     if fn_confirm "Would you really like to deploy the app to $1? [y/N]"
@@ -333,6 +339,8 @@ $(magentaprint 'CHOOSE DOCKER TARGET')
 $(greenprint '1)') Staging
 $(blueprint '2)') Localhost
 $(cyanprint '3)') Production
+$(yellowprint '4)') Docker-Machine SSH
+
 $(redprint '0)') Exit
 Choose an option:  "
     read -r ans
@@ -347,6 +355,10 @@ Choose an option:  "
         ;;
     3|[pP]|[pP]rod|[pP]roduction)
         menu_production
+        menu_mainmenu
+        ;;
+    4|ssh)
+        fn_docker_machine_ssh
         menu_mainmenu
         ;;
     0|[eE]|[eE]xit)
