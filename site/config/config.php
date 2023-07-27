@@ -7,11 +7,18 @@ loadenv([
 ]);
 
 return [
+    //some sensible defaults for development
+    'debug' => true,
+    'cache' => [
+        'pages' => [
+            'active' => false,
+        ]
+    ],
+
     // https://getkirby.com/docs/reference/system/options/panel#custom-panel-css
     'panel' => [
       'css' => 'assets/css/panel.css'
     ],
-
     // https://getkirby.com/docs/reference/system/options/languages
     'languages' => true,
     // 'languages.detect' => true
@@ -127,4 +134,13 @@ return [
         }
       ]
     ],
+    //some debuingging routs
+    'routes' => [
+        [
+          'pattern' => 'my/awesome/debugger',
+          'action'  => function () {
+            // ...
+          }
+        ],
+      ]
 ];

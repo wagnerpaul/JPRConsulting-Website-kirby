@@ -1,20 +1,15 @@
 <?php
+$standardConfig = include 'config.stg.php';
 
-return [
-    'debug' => true,
-    'url' => 'https://stg.blackletter.tech',
-    'cache' => [
-        'pages' => [
-            'active' => true,
-        ]
-    ],
- 	//deployment webhook config
-    'pju.webhook-field.endpoint' => env('WEBHOOKS_ENDPOINT'),
-    'pju.webhook-field.hooks' => [
-        env('DEPLOY_CONTENT_HOOK') => [
-          'url' => '/'.env('DEPLOY_CONTENT_HOOK').'/start',
-          'payload' => ['key' => env('DEPLOY_CONTENT_KEY')],
-          'showOutdated' => false
-        ]
-    ],
+//put special configs here, they will replace the standard config
+$extendedConfig = [
+    //example for caching
+    // 'cache' => [
+    //     'pages' => [
+    //         'active' => false,
+    //     ]
+    // ],
 ];
+
+return array_replace_recursive($standardConfig, $extendedConfig);
+
