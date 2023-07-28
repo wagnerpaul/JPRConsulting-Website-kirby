@@ -38,7 +38,7 @@ Kirby::plugin('wagnerpaul/deploy-content', [
                 'method' => 'POST',
                 'action'  => function () {
                   $key = kirby()->request()->get('key');
-                  if ($key === env('DEPLOY_CONTENT_KEY')) {
+                  if (option('env') !== 'prod' && $key === env('DEPLOY_CONTENT_KEY')) {
                     $response = Response::json(['status' => 'start'], 200);
                   } else {
                     $response = Response::json(['status' => 'error'], 400);
@@ -53,7 +53,7 @@ Kirby::plugin('wagnerpaul/deploy-content', [
           //after our progress has started do the directory copying
           'route:after' => function ($route, $path, $method) {
             $endpointAndHook = env('WEBHOOKS_ENDPOINT').'/'.env('DEPLOY_CONTENT_HOOK');
-            if ($path === $endpointAndHook.'/progress' && $method === 'POST') {
+            if (option('env') !== 'prod' && $path === $endpointAndHook.'/progress' && $method === 'POST') {
               $kirby = kirby();
               $site = $kirby->site();
               $site->flush_dir('/app/content-prod');
