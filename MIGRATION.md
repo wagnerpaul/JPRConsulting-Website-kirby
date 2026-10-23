@@ -50,6 +50,10 @@ Trigger: PHP 8.1 is EOL.
       on stg: 12 pages vs production with only the known excerpt diff,
       blueprints clean, sitemap identical, Panel login renders, no
       errors in logs. :stg pushed to Docker Hub (7dd26a55)
+- [ ] Backup chain retention: port blackletter's compose postexecute
+      hook (prune B2 to 3 full chains after each successful backup) and
+      recreate the backup containers. ON HOLD: another agent is working
+      on this; coordinate before touching the backup containers
 - [ ] Panel walkthrough on Kirby 5 staging (Paul)
 - [ ] Kirby license purchase (needed at launch, not for dev; flag, don't buy)
 - [ ] Production promotion after walkthrough + license: retag latest +
