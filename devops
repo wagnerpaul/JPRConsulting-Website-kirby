@@ -192,6 +192,8 @@ fn_pushcontent_atomic() {
         docker start "${SLD}-stg" >/dev/null
         docker rm -f "$sync_container" >/dev/null
         docker exec "${SLD}-stg" test -f /app/public/assets/css/site.css || return 1
+        # pages rendered from the old content stay cached otherwise
+        docker exec "${SLD}-stg" sh -c 'rm -rf /app/storage/cache/*' || return 1
         fn_verify_staging_https || return 1
         greenprint "Local content is live on staging and custom CSS was regenerated."
     else
