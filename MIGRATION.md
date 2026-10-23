@@ -43,8 +43,18 @@ Trigger: PHP 8.1 is EOL.
       identical to rung 4: 12 pages with only the known excerpt diff,
       blueprints clean, sitemap identical, Panel login renders, no
       errors in container logs. Local image tag: k5local
-- [ ] Panel walkthrough on Kirby 5
+- [x] Staging cutover (2026-10-23): volumes backed up locally
+      (backups/stg-content-pre-k5-*.tgz, accounts) and via volumerize;
+      transformed content pushed atomically; stg recreated on the
+      Kirby 5 / PHP 8.4 image with .env/.htpasswd re-injected. Battery
+      on stg: 12 pages vs production with only the known excerpt diff,
+      blueprints clean, sitemap identical, Panel login renders, no
+      errors in logs. :stg pushed to Docker Hub (7dd26a55)
+- [ ] Panel walkthrough on Kirby 5 staging (Paul)
 - [ ] Kirby license purchase (needed at launch, not for dev; flag, don't buy)
+- [ ] Production promotion after walkthrough + license: retag latest +
+      dated, recreate prod, re-inject, transform prod content volume
+      (or promote stg content), verify
 
 ## Local sandbox
 
