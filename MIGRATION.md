@@ -61,8 +61,19 @@ Trigger: PHP 8.1 is EOL.
       clean, sitemaps identical, /panel 404, logs clean. latest +
       20261023 on Docker Hub point at the Kirby 5 image (e93fc775);
       pre-K5 rollback image reachable by digest b6ab9f5c
+- [x] Contact forms tested live (2026-10-23); transport is the
+      office365 SMTP in .env. Postmark is now unused and cancelable
 - [ ] Kirby license purchase: site is live on Kirby 5, purchase due now
-- [ ] Jay's live contact-form test, then cancel Postmark
+
+## Final parity audit vs blackletter (2026-10-23)
+
+Dockerfile, entrypoint, opcache, nginx conf, generate-site-css and
+composer requires are identical; core is 5.6.1 in both. Plugin sets
+match except kirby-image-url, which is jpr-specific and kept. No
+leftover migration hazards (colors/clip/crop-string/commentions/
+z-table/stale queries/contentFile all zero). jpr's devops is ahead of
+blackletter's: promote re-injects .env/.htpasswd and unsets
+DOCKER_DEFAULT_PLATFORM; consider porting those back.
 
 ## Local sandbox
 
