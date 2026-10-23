@@ -145,7 +145,8 @@ Kirby::plugin('kirbyzone/sitemapper', [
                 // We start by checking what content translations we actually have:
                 $langs = [];
                 foreach (kirby()->languages() as $lang){
-                    if(!empty(F::modified($this->contentFile($lang->code())))) { $langs[] = $lang; }
+                    // Kirby 4: $page->contentFile() is deprecated; use the public translation API
+                    if($this->translation($lang->code())->exists()) { $langs[] = $lang; }
                 }
                 // add the existing language page URLs to the sitemap:
                 foreach ($langs as $lang) {
@@ -153,7 +154,7 @@ Kirby::plugin('kirbyzone/sitemapper', [
                     // check whether the page should be included in sitemap:
                     if(!$this->showInSitemap($code)){ continue; }
                     $url = $this->url($code);
-                    $pgMap[$url]['mod'] = F::modified($this->contentFile($code),'c','date');
+                    $pgMap[$url]['mod'] = $this->modified('c','date',$code);
                     $pgMap[$url]['lang'] = [];
                     foreach ($langs as $l) {
                         // try to get the locale set by the user -

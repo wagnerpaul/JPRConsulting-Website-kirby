@@ -85,7 +85,6 @@ columns:
                   - info
                   - accordion
                   - z-description
-                  - z-table
                   - line
                   - table
               media:
@@ -111,9 +110,6 @@ columns:
                   - z-content-slider
                   - z-projects
                   - z-products
-      commentions:
-        type: commentions
-
   - width: 1/3
     sections:
 
