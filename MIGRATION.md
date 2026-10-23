@@ -21,24 +21,44 @@ Trigger: PHP 8.1 is EOL.
       imagick, intl, zip, exif, opcache; clear_env=no; gzip w/o
       gzip_vary; absolute_redirect off; site.css generated at boot);
       verify-vs-prod.py: 12 pages, 0 differences vs production
-- [ ] Rung 2: Kirby 3.9.5 -> 4.9.6 + plugin audit
-- [ ] Rung 3: content transforms applied (local now, volumes at cutover)
-- [ ] Rung 4: Kirby 4 -> 5.6.x
-- [ ] Rung 5: PHP 8.4 bump, final battery
+- [x] Rung 2: Kirby 4.9.6. Removed: commentions (unused), sanitizer
+      (disabled), k3-image-clip (no clip boxes in content), kirby-colors
+      and table-field (fields now core). bettersearch, link-field,
+      code-editor moved to composer. Theme: clip() -> resize(),
+      toImage/toImages alias toFile/toFiles, colors -> color + alpha,
+      stale pages-section queries dropped, menu builder mobile column,
+      sitemapper contentFile() calls patched (output byte-identical to
+      blackletter's). Battery: 12 pages 0 diffs, blueprints clean,
+      sitemap identical (12 locs, 26 image entries), Panel login renders
+- [x] Rung 3: content transforms applied to local content (46 values);
+      staging/prod volumes get the same transform at cutover
+- [x] Rung 4: Kirby 5.6.1. bnomei plugins to 5.x, similar to composer
+      3.0.1, link-field vendored at 6.0.2, crop:'true' -> boolean in 43
+      thumb calls, both duplicate contact controllers emptied (Kirby 5
+      merges site.php, which holds the same handler; would double-send).
+      Battery: 12 pages, one known cosmetic diff (Kirby 5 excerpt keeps
+      the straddling word; one extra word on /blog), blueprints clean,
+      sitemap identical, Panel login renders
+- [x] Rung 5: image on php:8.4-fpm-alpine (PHP 8.4.27). Final battery
+      identical to rung 4: 12 pages with only the known excerpt diff,
+      blueprints clean, sitemap identical, Panel login renders, no
+      errors in container logs. Local image tag: k5local
 - [ ] Panel walkthrough on Kirby 5
 - [ ] Kirby license purchase (needed at launch, not for dev; flag, don't buy)
 
 ## Local sandbox
 
 ```
-docker run -d --name jpr-rung1 -p 8082:80 \
-  -e ENABLE_PANEL=false -e ENABLE_PW=false -e SERVER_NAME=localhost \
+docker run -d --name jpr-k5 -p 8082:80 \
+  -e ENABLE_PANEL=true -e ENABLE_PW=false -e SERVER_NAME=localhost \
   -v "$PWD/content:/app/content" -v "$PWD/.env:/app/.env" \
-  -v jpr-rung1-media:/app/public/media \
-  -v jpr-rung1-cache:/app/storage/cache \
-  -v jpr-rung1-sessions:/app/storage/sessions \
-  wagnerpaul/jprconsultingllc-main-app:rung1
+  -v jpr-k5-media:/app/public/media \
+  -v jpr-k5-cache:/app/storage/cache \
+  -v jpr-k5-sessions:/app/storage/sessions \
+  wagnerpaul/jprconsultingllc-main-app:k5local
+docker cp storage/accounts/. jpr-k5:/app/storage/accounts/
 python3 verify-vs-prod.py --local http://localhost:8082
+docker exec jpr-k5 php /app/check-blueprints.php
 ```
 
 Local storage/accounts was synced from the staging accounts volume
