@@ -50,15 +50,19 @@ Trigger: PHP 8.1 is EOL.
       on stg: 12 pages vs production with only the known excerpt diff,
       blueprints clean, sitemap identical, Panel login renders, no
       errors in logs. :stg pushed to Docker Hub (7dd26a55)
-- [ ] Backup chain retention: port blackletter's compose postexecute
-      hook (prune B2 to 3 full chains after each successful backup) and
-      recreate the backup containers. ON HOLD: another agent is working
-      on this; coordinate before touching the backup containers
-- [ ] Panel walkthrough on Kirby 5 staging (Paul)
-- [ ] Kirby license purchase (needed at launch, not for dev; flag, don't buy)
-- [ ] Production promotion after walkthrough + license: retag latest +
-      dated, recreate prod, re-inject, transform prod content volume
-      (or promote stg content), verify
+- [x] Backup chain retention live: blackletter's compose postexecute
+      hook ported, stg backup containers recreated, validated (manual
+      backup pruned the Aug 22 chains, Errors 0)
+- [x] Panel walkthrough on Kirby 5 staging (Paul, 2026-10-23)
+- [x] Production promotion (2026-10-23): prod content volume backed up
+      locally, staging content promoted (chown 82:82), prod recreated
+      on the Kirby 5 image with .env/.htpasswd re-injected, cache
+      cleared. Battery: stg vs prod 12 pages 0 differences, blueprints
+      clean, sitemaps identical, /panel 404, logs clean. latest +
+      20261023 on Docker Hub point at the Kirby 5 image (e93fc775);
+      pre-K5 rollback image reachable by digest b6ab9f5c
+- [ ] Kirby license purchase: site is live on Kirby 5, purchase due now
+- [ ] Jay's live contact-form test, then cancel Postmark
 
 ## Local sandbox
 
