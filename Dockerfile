@@ -55,6 +55,8 @@ RUN ln -s /etc/php81 /etc/php && \
     ln -s /usr/lib/php81 /usr/lib/php && \
     sed -i "s|;*upload_max_filesize =.*|upload_max_filesize = 100M;|i" /etc/php81/php.ini  && \
     sed -i "s|;*post_max_size =.*|post_max_size = 100M|i" /etc/php81/php.ini  && \
+    # keep container environment visible to php-fpm workers (ENABLE_PANEL)
+    echo "clear_env = no" >> /etc/php81/php-fpm.d/www.conf && \
     rm -fr /var/cache/apk/*
 
 # Install composer global bin
